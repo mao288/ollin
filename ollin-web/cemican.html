@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cemican · Ollin, Lunario 11 de julio de 2027</title>
+  <meta name="description" content="Cemican en Ollin: algo se mueve en el ombligo de la luna. Lunario del Auditorio Nacional, domingo 11 de julio de 2027.">
+  <meta name="theme-color" content="#07070D">
+  <meta property="og:title" content="Cemican en Ollin">
+  <meta property="og:image" content="og-image.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=Rubik+Dirt&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="banda.css">
+</head>
+<body class="pagina-banda">
+<!-- Generado por herramientas/generar_bandas.py desde datos/bandas.json. No edites a mano: edita el JSON y vuelve a generar. -->
+
+<div class="cosmos" aria-hidden="true">
+  <div class="cosmos__layer" data-depth="0.06"><div class="cosmos__nebula cosmos__nebula--a"></div></div>
+  <div class="cosmos__layer" data-depth="0.16"><div class="cosmos__nebula cosmos__nebula--b"></div></div>
+  <div class="cosmos__layer" data-depth="0.28"><div class="cosmos__nebula cosmos__nebula--c"></div></div>
+</div>
+<canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+<nav class="nav" aria-label="Principal">
+  <a class="nav__logo" href="index.html">Ollin</a>
+  <div class="nav__links">
+    <a href="index.html#concepto">Concepto</a>
+    <a href="index.html#bandas">Bandas</a>
+    <a href="index.html#lugar">El Lunario</a>
+    <a class="nav__cta" href="index.html#avisame">Avísame</a>
+  </div>
+</nav>
+
+<header class="hero bp__hero">
+  <div class="hero__inner">
+    <p class="bp__evento"><a href="index.html">Ollin</a>, 11 de julio de 2027, Lunario</p>
+    <h1 class="bp__name">Cemican</h1>
+    <p class="bp__altura">Sube desde el inframundo</p>
+    <p class="bp__verbo">Esa noche vienen a <strong><span class="ph">[verbo]</span></strong></p>
+    <dl class="bp__facts">
+      <div><dt>De</dt><dd>Guadalajara, Jalisco</dd></div>
+      <div><dt>Desde</dt><dd>2006</dd></div>
+      <div><dt>Suena a</dt><dd><span class="ph">[Su sonido en una frase, máx. 80 caracteres]</span></dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+<div class="tierra">
+<div class="horizonte" aria-hidden="true"></div>
+
+<section class="bp__sec wrap">
+  <div class="bp__grid losa">
+    <div class="bp__foto bp__foto--ph ph-box" role="img" aria-label="Foto pendiente"><span>Foto de la banda<br>pendiente</span></div>
+    <div>
+      <h2 class="h-display">Su camino</h2>
+      <p class="lead"><span class="ph">[Trayectoria en tercera persona, máx. 450 caracteres. Llega del formulario.]</span></p>
+      <h3 class="bp__sub">Momentos que los definen</h3>
+      <ul class="bp__hitos"><li><span class="ph">[Hito 1]</span></li><li><span class="ph">[Hito 2]</span></li><li><span class="ph">[Hito 3]</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="bp__sec wrap" aria-labelledby="integrantes-title">
+  <div class="losa">
+    <h2 class="h-display" id="integrantes-title">Integrantes</h2>
+    <ul class="miembros">
+        <li class="miembro">
+          <div class="miembro__foto miembro__foto--ph" aria-hidden="true"></div>
+          <p class="miembro__nombre"><span class="ph">[Nombre]</span></p>
+          <p class="miembro__rol"><span class="ph">[Rol]</span></p>
+          <span class="miembro__ig ph">@instagram</span>
+        </li>
+        <li class="miembro">
+          <div class="miembro__foto miembro__foto--ph" aria-hidden="true"></div>
+          <p class="miembro__nombre"><span class="ph">[Nombre]</span></p>
+          <p class="miembro__rol"><span class="ph">[Rol]</span></p>
+          <span class="miembro__ig ph">@instagram</span>
+        </li>
+        <li class="miembro">
+          <div class="miembro__foto miembro__foto--ph" aria-hidden="true"></div>
+          <p class="miembro__nombre"><span class="ph">[Nombre]</span></p>
+          <p class="miembro__rol"><span class="ph">[Rol]</span></p>
+          <span class="miembro__ig ph">@instagram</span>
+        </li>
+        <li class="miembro">
+          <div class="miembro__foto miembro__foto--ph" aria-hidden="true"></div>
+          <p class="miembro__nombre"><span class="ph">[Nombre]</span></p>
+          <p class="miembro__rol"><span class="ph">[Rol]</span></p>
+          <span class="miembro__ig ph">@instagram</span>
+        </li>
+    </ul>
+  </div>
+</section>
+
+<section class="bp__sec wrap" aria-labelledby="escucha-title">
+  <div class="bp__grid losa">
+    <div>
+      <h2 class="h-display" id="escucha-title">Empieza por</h2>
+      <ul class="tracks"><li><span class="tracks__t">Guerreros de Cemican</span><span class="tracks__why"><span class="ph">[Por qué, máx. 60 caracteres]</span></span></li><li><span class="tracks__t">Tzitzimime (Danza de los Huesos)</span><span class="tracks__why"><span class="ph">[Por qué, máx. 60 caracteres]</span></span></li><li><span class="tracks__t">Táan ti le Xibalba</span><span class="tracks__why"><span class="ph">[Por qué, máx. 60 caracteres]</span></span></li></ul>
+    </div>
+    <iframe class="player" title="Reproductor de Spotify de Cemican" src="https://open.spotify.com/embed/artist/0hzhSWZR2nszVSKtN15qNj" width="100%" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </div>
+</section>
+
+<section class="bp__sec wrap" aria-labelledby="disco-title">
+  <div class="losa">
+    <h2 class="h-display" id="disco-title">Discografía</h2>
+    <ul class="discos"><li class="disco"><div class="disco__portada disco__portada--ph" aria-hidden="true"></div><p class="disco__titulo"><span class="ph">[Título]</span></p><p class="disco__anio"><span class="ph">[año]</span></p></li><li class="disco"><div class="disco__portada disco__portada--ph" aria-hidden="true"></div><p class="disco__titulo"><span class="ph">[Título]</span></p><p class="disco__anio"><span class="ph">[año]</span></p></li></ul>
+    <h3 class="bp__sub">Síguelos</h3>
+    <p class="bp__redes">
+          <a href="https://www.instagram.com/cemican_mex/" rel="noopener">Instagram</a>
+          <a href="https://open.spotify.com/artist/0hzhSWZR2nszVSKtN15qNj" rel="noopener">Spotify</a>
+          <span class="ph">YouTube</span>
+          <a href="https://www.facebook.com/CemicanMex" rel="noopener">Facebook</a>
+          <span class="ph">Tienda</span>
+          <span class="ph">Sitio web</span>
+    </p>
+  </div>
+</section>
+
+<nav class="bp__sec wrap bp__nav" aria-label="Otras bandas">
+  <a class="bp__puerta losa" href="she-no-more.html"><span class="bp__dir">Anterior</span><span class="bp__pname">She No More</span><span class="bp__palt">Bajan desde las estrellas</span></a>
+  <a class="bp__puerta losa" href="anna-fiori.html"><span class="bp__dir">Siguiente</span><span class="bp__pname">Anna Fiori</span><span class="bp__palt">Crece con la luna</span></a>
+</nav>
+<p class="bp__sec wrap bp__volver">
+  <a class="btn btn--ghost" href="index.html">Volver a Ollin</a>
+  <a class="btn btn--primary" href="index.html#avisame">Avísame cuando salgan los boletos</a>
+</p>
+
+</div><!-- /tierra -->
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <p class="footer__name">Ollin</p>
+    <p><a href="she-no-more.html">She No More</a> <a href="cemican.html">Cemican</a> <a href="anna-fiori.html">Anna Fiori</a></p>
+    <p class="footer__small">Algo se mueve en el ombligo de la luna. Domingo 11 de julio de 2027, Lunario del Auditorio Nacional. 🤘</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

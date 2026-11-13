@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuéntanos de tu banda · Ollin</title>
+  <meta name="description" content="Formulario para las bandas de Ollin: lo que nos compartan se publica en el sitio del evento con la misma estructura para las tres.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07070D">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=Rubik+Dirt&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="formulario.css">
+</head>
+<body class="pagina-form">
+
+<div class="cosmos" aria-hidden="true">
+  <div class="cosmos__layer" data-depth="0.06"><div class="cosmos__nebula cosmos__nebula--a"></div></div>
+  <div class="cosmos__layer" data-depth="0.16"><div class="cosmos__nebula cosmos__nebula--b"></div></div>
+  <div class="cosmos__layer" data-depth="0.28"><div class="cosmos__nebula cosmos__nebula--c"></div></div>
+</div>
+<canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+<main class="ff">
+  <header class="ff__head wrap wrap--narrow">
+    <p class="ff__kicker"><a href="index.html">Ollin</a>, 11 de julio de 2027, Lunario</p>
+    <h1 class="h-display">Cuéntanos de tu banda</h1>
+    <p class="lead">Lo que nos compartan aquí se publica en el sitio del evento. Les pedimos lo mismo a las tres bandas para que la página se lea como una sola historia y no como tres carteles pegados.</p>
+    <p>Son unos 15 minutos. Si algo no aplica, déjenlo en blanco. Los textos con límite de caracteres van casi tal cual al sitio, así que escríbanlos como quieren que se lean.</p>
+  </header>
+
+  <form class="ff__form wrap wrap--narrow" name="bandas" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="bandas-form">
+    <input type="hidden" name="form-name" value="bandas">
+    <p class="hp"><label>No llenes esto <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+    <!-- 1 -->
+    <fieldset class="losa ff__step">
+      <legend><span class="ff__num">1</span> La banda</legend>
+
+      <div class="field">
+        <label for="b-nombre">Nombre de la banda o proyecto</label>
+        <input id="b-nombre" name="banda" type="text" required>
+      </div>
+      <div class="ff__row">
+        <div class="field">
+          <label for="b-origen">De dónde son</label>
+          <input id="b-origen" name="origen" type="text" placeholder="Ciudad, estado">
+        </div>
+        <div class="field">
+          <label for="b-anio">Año en que empezaron</label>
+          <input id="b-anio" name="anio_inicio" type="text" inputmode="numeric" maxlength="4" placeholder="2006">
+        </div>
+      </div>
+      <div class="field">
+        <label for="b-genero">Cómo describen su sonido <span class="opt">en una frase</span></label>
+        <input id="b-genero" name="sonido" type="text" maxlength="80" data-count placeholder="Ej. folk metal prehispánico con thrash y death">
+        <p class="ff__count" data-for="b-genero"></p>
+      </div>
+      <div class="field">
+        <label for="b-integrantes">Integrantes: nombre, rol e Instagram de cada quien</label>
+        <p class="ff__hint">Cada integrante tiene su tarjeta en la página de la banda, con su foto y un link a su Instagram. Un integrante por línea.</p>
+        <textarea id="b-integrantes" name="integrantes" rows="5" placeholder="Ej. Tecuhtli, guitarra y voz, @usuario"></textarea>
+      </div>
+    </fieldset>
+
+    <!-- 2 -->
+    <fieldset class="losa ff__step">
+      <legend><span class="ff__num">2</span> Su camino</legend>
+
+      <div class="field">
+        <label for="b-trayectoria">Su trayectoria en corto</label>
+        <p class="ff__hint">Va en su ficha del sitio. Escríbanla en tercera persona, como la leería alguien que no los conoce.</p>
+        <textarea id="b-trayectoria" name="trayectoria" rows="5" maxlength="450" data-count required></textarea>
+        <p class="ff__count" data-for="b-trayectoria"></p>
+      </div>
+      <div class="field">
+        <label for="b-discos">Discografía principal</label>
+        <textarea id="b-discos" name="discografia" rows="4" placeholder="Un disco por línea: año, título"></textarea>
+      </div>
+      <div class="field">
+        <label for="b-hitos">Hasta tres momentos que los definen</label>
+        <p class="ff__hint">Festivales, giras, premios, colaboraciones. Uno por línea.</p>
+        <textarea id="b-hitos" name="hitos" rows="3"></textarea>
+      </div>
+    </fieldset>
+
+    <!-- 3 -->
+    <fieldset class="losa ff__step">
+      <legend><span class="ff__num">3</span> Tres canciones para empezar</legend>
+      <p class="ff__hint">Las que le recomendarían a alguien que viene por otra de las bandas. Con una línea de por qué.</p>
+
+      <div class="ff__song">
+        <div class="field"><label for="c1">Canción 1</label><input id="c1" name="cancion_1" type="text"></div>
+        <div class="field"><label for="c1p">Por qué</label><input id="c1p" name="cancion_1_porque" type="text" maxlength="60" data-count><p class="ff__count" data-for="c1p"></p></div>
+      </div>
+      <div class="ff__song">
+        <div class="field"><label for="c2">Canción 2</label><input id="c2" name="cancion_2" type="text"></div>
+        <div class="field"><label for="c2p">Por qué</label><input id="c2p" name="cancion_2_porque" type="text" maxlength="60" data-count><p class="ff__count" data-for="c2p"></p></div>
+      </div>
+      <div class="ff__song">
+        <div class="field"><label for="c3">Canción 3</label><input id="c3" name="cancion_3" type="text"></div>
+        <div class="field"><label for="c3p">Por qué</label><input id="c3p" name="cancion_3_porque" type="text" maxlength="60" data-count><p class="ff__count" data-for="c3p"></p></div>
+      </div>
+    </fieldset>
+
+    <!-- 4 -->
+    <fieldset class="losa ff__step">
+      <legend><span class="ff__num">4</span> El encuentro</legend>
+      <p class="ff__hint">Esto es lo que va a hacer que la página se sienta como una sola cosa. Contesten con calma.</p>
+
+      <div class="field">
+        <label for="e-trae">¿Qué traen ustedes a este encuentro?</label>
+        <p class="ff__hint">Lo que su música aporta que las otras dos bandas no.</p>
+        <textarea id="e-trae" name="que_traen" rows="3" maxlength="280" data-count></textarea>
+        <p class="ff__count" data-for="e-trae"></p>
+      </div>
+      <div class="field">
+        <label for="e-significa">¿Qué significa para ustedes compartir escenario con las otras dos bandas?</label>
+        <textarea id="e-significa" name="que_significa" rows="3" maxlength="280" data-count></textarea>
+        <p class="ff__count" data-for="e-significa"></p>
+      </div>
+      <div class="field">
+        <label for="e-cancion">¿Alguna canción suya conecta con la luna, las estrellas, el lago, el Mictlan o el centro?</label>
+        <p class="ff__hint">Cuál y qué cuenta. Nos ayuda a no interpretar de más.</p>
+        <textarea id="e-cancion" name="cancion_conexion" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label for="e-verbo">Un verbo para lo que va a pasar esa noche</label>
+        <input id="e-verbo" name="verbo" type="text" maxlength="24" placeholder="Ej. encender, invocar, despertar">
+      </div>
+      <div class="field">
+        <label for="e-publico">Algo que quieran que el público de las otras bandas sepa de ustedes</label>
+        <textarea id="e-publico" name="para_otros_publicos" rows="2" maxlength="200" data-count></textarea>
+        <p class="ff__count" data-for="e-publico"></p>
+      </div>
+    </fieldset>
+
+    <!-- 5 -->
+    <fieldset class="losa ff__step">
+      <legend><span class="ff__num">5</span> Links y materiales</legend>
+
+      <div class="ff__row">
+        <div class="field"><label for="l-spotify">Spotify</label><input id="l-spotify" name="spotify" type="url" placeholder="https://open.spotify.com/artist/…"></div>
+        <div class="field"><label for="l-youtube">YouTube</label><input id="l-youtube" name="youtube" type="url" placeholder="https://"></div>
+      </div>
+      <div class="ff__row">
+        <div class="field"><label for="l-instagram">Instagram</label><input id="l-instagram" name="instagram" type="text" placeholder="@usuario"></div>
+        <div class="field"><label for="l-facebook">Facebook</label><input id="l-facebook" name="facebook" type="url" placeholder="https://"></div>
+      </div>
+      <div class="ff__row">
+        <div class="field"><label for="l-bandcamp">Bandcamp u otra tienda</label><input id="l-bandcamp" name="bandcamp" type="url" placeholder="https://"></div>
+        <div class="field"><label for="l-web">Sitio web</label><input id="l-web" name="web" type="url" placeholder="https://"></div>
+      </div>
+      <div class="field">
+        <label for="l-carpeta">Carpeta con logo y fotos</label>
+        <p class="ff__hint">Un link de Google Drive, Dropbox o WeTransfer con: el logo en PNG o SVG con fondo transparente, dos o tres fotos de la banda en alta, una foto de cada integrante (de preferencia cuadrada) y las portadas de sus discos.</p>
+        <input id="l-carpeta" name="carpeta_materiales" type="url" placeholder="https://">
+      </div>
+      <div class="field">
+        <label for="l-credito">Crédito de las fotos</label>
+        <input id="l-credito" name="credito_fotos" type="text" placeholder="Nombre del fotógrafo o fotógrafa">
+      </div>
+    </fieldset>
+
+    <!-- 6 -->
+    <fieldset class="losa ff__step">
+      <legend><span class="ff__num">6</span> Contacto y permiso</legend>
+
+      <div class="ff__row">
+        <div class="field"><label for="k-nombre">Quién llena esto</label><input id="k-nombre" name="contacto_nombre" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="k-whats">WhatsApp</label><input id="k-whats" name="contacto_whatsapp" type="tel" autocomplete="tel" inputmode="tel" required></div>
+      </div>
+      <div class="field">
+        <label for="k-email">Correo</label>
+        <input id="k-email" name="contacto_email" type="email" autocomplete="email">
+      </div>
+      <label class="ff__check">
+        <input type="checkbox" name="autorizacion" value="Sí" required>
+        <span>Autorizamos usar estos textos, links, logo y fotos en el sitio y las redes del evento. Antes de publicar nos mandan cómo quedó.</span>
+      </label>
+      <div class="field">
+        <label for="k-notas">Algo más <span class="opt">(opcional)</span></label>
+        <textarea id="k-notas" name="notas" rows="2"></textarea>
+      </div>
+
+      <button class="btn btn--primary" type="submit">Enviar respuestas</button>
+      <p class="form__status" id="bandas-status" role="status"></p>
+    </fieldset>
+  </form>
+</main>
+
+<script src="main.js"></script>
+<script src="formulario.js"></script>
+</body>
+</html>

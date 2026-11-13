@@ -1,0 +1,302 @@
+{
+  "_instrucciones": "Llena los campos con lo que manden las bandas en el formulario. Todo lo que está entre [corchetes] es un placeholder: la página lo muestra marcado como pendiente. Después corre: python3 herramientas/generar_bandas.py",
+  "bandas": [
+    {
+      "slug": "she-no-more",
+      "nombre": "She No More",
+      "altura": "Bajan desde las estrellas",
+      "verbo": "[verbo]",
+      "origen": "Estado de México",
+      "inicio": "[año]",
+      "sonido": "Metal sinfónico para despertar al mundo",
+      "logo": "https://i.ibb.co/20L06zVc/Logo-SNM-01-2.png",
+      "foto": "img/bandas/she-no-more.jpg",
+      "credito_foto": "Sesión de Buscaré (2026). Foto provisional armada con los retratos individuales.",
+      "trayectoria": "Banda mexicana de metal sinfónico que usa la música como plataforma de conciencia, resistencia y transformación. Nació de la historia personal de su vocalista, Mariana Cassaigne, y se volvió un movimiento colectivo: sus letras hablan de violencia de género, guerra, injusticia social y salud mental. Abrió las giras mexicanas de Epica y Visions of Atlantis, y en 2024 lanzó su primer álbum, Voice For The Voiceless.",
+      "hitos": [
+        "Teloneros de Epica en su gira por México (mayo 2025)",
+        "Teloneros de Visions of Atlantis en su gira por México (septiembre 2024)",
+        "“Resurgir”, con Mark Jansen de Epica (2025)"
+      ],
+      "integrantes": [
+        {
+          "nombre": "Mariana Cassaigne",
+          "rol": "Voz",
+          "instagram": "https://www.instagram.com/mariancassaigne",
+          "foto": "https://res.cloudinary.com/diobgaxfl/image/upload/c_thumb,g_face,z_0.55,w_400,h_400/v1777170495/SNM_Buscare-02_web_srjpnx.jpg"
+        },
+        {
+          "nombre": "Fer G. Merino",
+          "rol": "Guitarra",
+          "instagram": "https://www.instagram.com/fer_gmr",
+          "foto": "https://res.cloudinary.com/diobgaxfl/image/upload/c_thumb,g_face,z_0.55,w_400,h_400/v1777170495/SNM_Buscare-05_web_kaqqrz.jpg"
+        },
+        {
+          "nombre": "Eduardo Salmerón",
+          "rol": "Guitarra",
+          "instagram": "https://www.instagram.com/eddusalmeron",
+          "foto": "https://res.cloudinary.com/diobgaxfl/image/upload/c_thumb,g_face,z_0.55,w_400,h_400/v1777170495/SNM_Buscare-04_web_tzmgjc.jpg"
+        },
+        {
+          "nombre": "Mao Rubio",
+          "rol": "Guitarra",
+          "instagram": "https://www.instagram.com/mao.rubio28",
+          "foto": "https://res.cloudinary.com/diobgaxfl/image/upload/c_thumb,g_face,z_0.55,w_400,h_400/v1777170495/SNM_Buscare-01_web_pqzgaz.jpg"
+        },
+        {
+          "nombre": "Pablo A. Anduaga",
+          "rol": "Bajo",
+          "instagram": "https://www.instagram.com/pablo_anduaga",
+          "foto": "https://res.cloudinary.com/diobgaxfl/image/upload/c_thumb,g_face,z_0.55,w_400,h_400/v1777170495/SNM_Buscare-07_web_uxbpc7.jpg"
+        },
+        {
+          "nombre": "Jesús Loera",
+          "rol": "Batería",
+          "instagram": "https://www.instagram.com/yuyo_loera",
+          "foto": "https://res.cloudinary.com/diobgaxfl/image/upload/c_thumb,g_face,z_0.55,w_400,h_400/v1777170495/SNM_Buscare-08_web_zxyu9q.jpg"
+        }
+      ],
+      "canciones": [
+        {
+          "titulo": "Dust On The Map",
+          "porque": "Polvo y un pestañeo en el cosmos"
+        },
+        {
+          "titulo": "Más Allá de la Tormenta",
+          "porque": "Con Anna Fiori"
+        },
+        {
+          "titulo": "Buscaré",
+          "porque": "Su sencillo más reciente (2026)"
+        }
+      ],
+      "spotify_embed": "https://open.spotify.com/embed/artist/1BjEJmlPmGmzYfMKGueoMl",
+      "discografia": [
+        {
+          "anio": "2026",
+          "titulo": "Buscaré",
+          "tipo": "Sencillo",
+          "portada": "https://res.cloudinary.com/diobgaxfl/image/upload/v1773460108/Buscar%C3%A9_gqxnmo.jpg",
+          "link": "https://open.spotify.com/track/610TRYYWOusuKpfDRu2ldZ"
+        },
+        {
+          "anio": "2025",
+          "titulo": "Tercera Guerra Mundial",
+          "tipo": "Sencillo",
+          "portada": "https://i.ibb.co/DP20wXcY/Tercera-Guerra-Mundial.jpg",
+          "link": "https://open.spotify.com/album/6ysyRHDMcK4iKEgCgsyZ89"
+        },
+        {
+          "anio": "2025",
+          "titulo": "Resurgir ft. Mark Jansen",
+          "tipo": "Sencillo",
+          "portada": "https://i.ibb.co/tMDfhjkp/Resurgir.jpg",
+          "link": "https://open.spotify.com/album/4H6fdGUOPqh2uftPwQrvy1"
+        },
+        {
+          "anio": "2024",
+          "titulo": "Voice For The Voiceless",
+          "tipo": "Álbum",
+          "portada": "https://i.ibb.co/jkzM92KG/Voice-For-The-Voiceless.jpg",
+          "link": "https://open.spotify.com/album/4yPrVbinH7ub4XuwJP87SX"
+        },
+        {
+          "anio": "2024",
+          "titulo": "Canto a la Tierra",
+          "tipo": "Sencillo",
+          "portada": "https://i.ibb.co/rf04PL3N/Canto-A-La-Tierra.jpg",
+          "link": "https://open.spotify.com/album/12a77Ugg8mcwTgK0oZP04A"
+        },
+        {
+          "anio": "2024",
+          "titulo": "Now This",
+          "tipo": "Sencillo",
+          "portada": "https://i.ibb.co/6RPCXrNH/Now-This.jpg",
+          "link": "https://open.spotify.com/album/5Msjz2U1PC9coWVD0uwCgI"
+        },
+        {
+          "anio": "2023",
+          "titulo": "Burn It All",
+          "tipo": "Sencillo",
+          "portada": "https://res.cloudinary.com/diobgaxfl/image/upload/v1769791739/ab67616d0000b27331b81fbe435f96710ff1f5a0_swesmx.jpg",
+          "link": "https://open.spotify.com/track/0fz2awiTjVil6eMkNppuWu"
+        },
+        {
+          "anio": "2019",
+          "titulo": "Run Away",
+          "tipo": "EP",
+          "portada": "https://i.ibb.co/Z7F6Svb/Run-Away.jpg",
+          "link": "https://open.spotify.com/album/1yw3lL2wNiHiLICq3Ecyir"
+        }
+      ],
+      "redes": {
+        "instagram": "https://www.instagram.com/shenomoreofficial/",
+        "spotify": "https://open.spotify.com/artist/1BjEJmlPmGmzYfMKGueoMl",
+        "youtube": "https://www.youtube.com/shenomore",
+        "facebook": "https://www.facebook.com/shenomoreofficial",
+        "tiktok": "https://www.tiktok.com/@shenomoreofficial",
+        "patreon": "https://www.patreon.com/cw/u79436563",
+        "tienda": "https://shenomore.com/merch.html",
+        "web": "https://shenomore.com"
+      }
+    },
+    {
+      "slug": "cemican",
+      "nombre": "Cemican",
+      "altura": "Sube desde el inframundo",
+      "verbo": "[verbo]",
+      "origen": "Guadalajara, Jalisco",
+      "inicio": "2006",
+      "sonido": "[Su sonido en una frase, máx. 80 caracteres]",
+      "logo": "",
+      "foto": "",
+      "credito_foto": "",
+      "trayectoria": "[Trayectoria en tercera persona, máx. 450 caracteres. Llega del formulario.]",
+      "hitos": [
+        "[Hito 1]",
+        "[Hito 2]",
+        "[Hito 3]"
+      ],
+      "integrantes": [
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        },
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        },
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        },
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        }
+      ],
+      "canciones": [
+        {
+          "titulo": "Guerreros de Cemican",
+          "porque": "[Por qué, máx. 60 caracteres]"
+        },
+        {
+          "titulo": "Tzitzimime (Danza de los Huesos)",
+          "porque": "[Por qué, máx. 60 caracteres]"
+        },
+        {
+          "titulo": "Táan ti le Xibalba",
+          "porque": "[Por qué, máx. 60 caracteres]"
+        }
+      ],
+      "spotify_embed": "https://open.spotify.com/embed/artist/0hzhSWZR2nszVSKtN15qNj",
+      "discografia": [
+        {
+          "anio": "[año]",
+          "titulo": "[Título]",
+          "portada": ""
+        },
+        {
+          "anio": "[año]",
+          "titulo": "[Título]",
+          "portada": ""
+        }
+      ],
+      "redes": {
+        "instagram": "https://www.instagram.com/cemican_mex/",
+        "spotify": "https://open.spotify.com/artist/0hzhSWZR2nszVSKtN15qNj",
+        "youtube": "",
+        "facebook": "https://www.facebook.com/CemicanMex",
+        "tienda": "",
+        "web": ""
+      }
+    },
+    {
+      "slug": "anna-fiori",
+      "nombre": "Anna Fiori",
+      "altura": "Crece con la luna",
+      "verbo": "[verbo]",
+      "origen": "Ciudad de México",
+      "inicio": "[año]",
+      "sonido": "[Su sonido en una frase, máx. 80 caracteres]",
+      "logo": "",
+      "foto": "",
+      "credito_foto": "",
+      "trayectoria": "[Trayectoria en tercera persona, máx. 450 caracteres. Llega del formulario.]",
+      "hitos": [
+        "[Hito 1]",
+        "[Hito 2]",
+        "[Hito 3]"
+      ],
+      "integrantes": [
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        },
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        },
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        },
+        {
+          "nombre": "[Nombre]",
+          "rol": "[Rol]",
+          "instagram": "",
+          "foto": ""
+        }
+      ],
+      "canciones": [
+        {
+          "titulo": "En el Vacío",
+          "porque": "[Por qué, máx. 60 caracteres]"
+        },
+        {
+          "titulo": "Mictlan",
+          "porque": "[Por qué, máx. 60 caracteres]"
+        },
+        {
+          "titulo": "Yollotzin",
+          "porque": "[Por qué, máx. 60 caracteres]"
+        }
+      ],
+      "spotify_embed": "https://open.spotify.com/embed/artist/518MGsGqVYTk86dnrxZHX6",
+      "discografia": [
+        {
+          "anio": "[año]",
+          "titulo": "[Título]",
+          "portada": ""
+        },
+        {
+          "anio": "[año]",
+          "titulo": "[Título]",
+          "portada": ""
+        }
+      ],
+      "redes": {
+        "instagram": "",
+        "spotify": "https://open.spotify.com/artist/518MGsGqVYTk86dnrxZHX6",
+        "youtube": "",
+        "facebook": "",
+        "tienda": "https://annafiorimx.bandcamp.com",
+        "web": "https://www.annafiorimx.com"
+      }
+    }
+  ]
+}
