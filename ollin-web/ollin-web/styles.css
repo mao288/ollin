@@ -1,0 +1,573 @@
+/* =========================================================
+   Ollin: algo se mueve en el ombligo de la luna — sitio del evento
+   Paleta tomada del flyer de Cemican, neutral para las 3 bandas.
+   Arriba: cosmos. Al bajar: la tierra, piedra tallada.
+   ========================================================= */
+:root {
+  --void: #07070D;       /* espacio */
+  --soot: #120D09;       /* hollín, sombra de piedra */
+  --stone: #3A3027;      /* piedra */
+  --bone: #EADFC8;       /* hueso */
+  --bone-dim: #C7B9A1;
+  --ash: #9B8C76;
+  --gold: #D6AF63;       /* oro viejo de la tipografía del flyer */
+  --marigold: #EE7B27;   /* cempasúchil */
+  --blood: #9A2E22;      /* sangre seca */
+  --jade: #64A58E;       /* jade de las serpientes */
+
+  --line: rgba(214, 175, 99, .22);
+  --line-soft: rgba(234, 223, 200, .12);
+
+  --display: "Rubik Dirt", Impact, "Arial Black", sans-serif;
+  --body: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --wrap: 72rem;
+  --narrow: 42rem;
+  --gap: clamp(1.25rem, 4vw, 2.5rem);
+  --section: clamp(4.5rem, 12vw, 9rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--void); }
+body {
+  margin: 0;
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background: var(--void);
+}
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; border-radius: 2px; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem; z-index: 10;
+  background: var(--bone); color: var(--soot); padding: .6rem 1rem;
+}
+.skip:focus { top: 1rem; }
+
+.wrap { width: min(100% - 2 * var(--gap), var(--wrap)); margin-inline: auto; }
+.wrap--narrow { width: min(100% - 2 * var(--gap), var(--narrow)); }
+
+/* Las tres bandas comparten tratamiento: nadie tiene "su" color */
+.c-snm, .c-cem, .c-anna { color: var(--gold); }
+
+/* ---------- capas de fondo ---------- */
+/* Cosmos: nebulosa viva + estrellas, fijos en pantalla.
+   Se apagan al llegar a la tierra (main.js → updateFade) */
+.cosmos, .sky {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+.cosmos { overflow: hidden; }
+.cosmos__layer { position: absolute; inset: 0; will-change: transform; }
+.cosmos__nebula {
+  position: absolute; inset: -18%;
+  background: url("img/nebula.jpg") center / cover no-repeat;
+  will-change: transform;
+}
+.cosmos__nebula--a { animation: nebula-a 34s ease-in-out infinite alternate; }
+.cosmos__nebula--b {
+  /* capa espejeada: las nubes se cruzan en sentidos opuestos */
+  opacity: .45; mix-blend-mode: screen;
+  animation: nebula-b 26s ease-in-out infinite alternate;
+}
+.cosmos__nebula--c {
+  /* capa cercana, tenue y más rápida: da profundidad */
+  opacity: .22; mix-blend-mode: screen;
+  background-size: 140% auto;
+  animation: nebula-c 19s ease-in-out infinite alternate;
+}
+@keyframes nebula-a {
+  from { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); }
+  to   { transform: translate3d(-9%, 6%, 0) scale(1.22) rotate(4deg); }
+}
+@keyframes nebula-b {
+  from { transform: scaleX(-1) translate3d(0, 0, 0) scale(1.08) rotate(0deg); }
+  to   { transform: scaleX(-1) translate3d(-10%, -7%, 0) scale(1.3) rotate(-6deg); }
+}
+@keyframes nebula-c {
+  from { transform: scaleY(-1) translate3d(6%, 0, 0) scale(1.1); }
+  to   { transform: scaleY(-1) translate3d(-8%, 8%, 0) scale(1.35) rotate(5deg); }
+}
+
+.hero, main, .footer { position: relative; z-index: 1; }
+
+/* La tierra: la roca aparece poco a poco debajo de las bandas */
+.tierra { position: relative; isolation: isolate; }
+.tierra::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(7,7,13,.55) 0%, rgba(18,13,9,.35) 40%, rgba(18,13,9,.55) 100%),
+    url("img/rock.jpg") center top / 820px auto repeat;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 4rem);
+          mask-image: linear-gradient(180deg, transparent 0, #000 4rem);
+}
+
+.concepto__sub { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.4rem; color: var(--gold); margin: 3rem 0 .5rem; }
+
+/* Bitácora: una línea de tiempo real, la entrada viva arriba */
+.bitacora { padding-block: calc(var(--section) / 1.5); }
+.bitacora__lista { list-style: none; padding: 0; margin: 2.5rem 0 0; position: relative; }
+.bitacora__lista::before {
+  content: ""; position: absolute; left: .45rem; top: .6rem; bottom: .6rem; width: 1px;
+  background: linear-gradient(180deg, var(--marigold), var(--line) 30%, var(--line));
+}
+.bitacora__item { position: relative; padding: 0 0 2rem 2.2rem; }
+.bitacora__item::before {
+  content: ""; position: absolute; left: 0; top: .35rem; width: .9rem; height: .9rem; border-radius: 50%;
+  background: var(--void); border: 1.5px solid var(--gold);
+}
+.bitacora__item--now::before { background: var(--marigold); border-color: var(--marigold); box-shadow: 0 0 0 0 rgba(238,123,39,.6); animation: latido 2.4s ease-out infinite; }
+@keyframes latido { 0% { box-shadow: 0 0 0 0 rgba(238,123,39,.55); } 80%, 100% { box-shadow: 0 0 0 14px rgba(238,123,39,0); } }
+.bitacora__fecha { margin: 0 0 .2rem; color: var(--gold); font-weight: 600; font-size: .95rem; }
+.bitacora__item--now .bitacora__fecha { color: var(--marigold); }
+.bitacora__texto { margin: 0; color: var(--bone); }
+
+/* Lago: Metztliapan. Empieza en "Quiénes se están encontrando" y llega hasta la orilla de piedra */
+.lago {
+  position: relative; z-index: 1;
+  overflow: hidden;
+  background: #050A0B;
+  padding-bottom: 2.5rem;
+  /* el agua aparece poco a poco desde el cielo, sin corte */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 7rem);
+          mask-image: linear-gradient(180deg, transparent 0, #000 7rem);
+}
+/* El agua: la textura con el filtro de oleaje encima. Se extiende más allá del borde
+   para que la deformación nunca deje ver un hueco en las orillas. */
+.lago__agua {
+  position: absolute; inset: -24px;
+  background:
+    linear-gradient(180deg, rgba(5,10,11,0) 60%, #0B0E0B 100%),
+    url("img/water.jpg") center top / cover no-repeat;
+  animation: deriva 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes deriva {
+  from { transform: translate3d(-10px, 0, 0); }
+  to   { transform: translate3d(10px, 2px, 0); }
+}
+/* Oleaje: main.js redibuja el agua en franjas que se desplazan con una onda.
+   Mientras no corre (sin JS o con "reducir movimiento"), se ve .lago__agua quieta debajo. */
+.lago__olas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity .6s; }
+.lago__olas.is-on { opacity: 1; }
+/* Destellos de la luna sobre el agua (los dibuja main.js) */
+.lago__brillos { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.lago__reflejo {
+  /* el mismo oleaje, desplazado y sumado: los destellos de la luna se mueven */
+  position: absolute; inset: 0;
+  background: url("img/water.jpg") center top / cover no-repeat;
+  mix-blend-mode: screen; opacity: .4;
+  -webkit-mask-image: radial-gradient(ellipse 34% 120% at 50% 0%, #000 0%, rgba(0,0,0,.5) 50%, transparent 85%);
+          mask-image: radial-gradient(ellipse 34% 120% at 50% 0%, #000 0%, rgba(0,0,0,.5) 50%, transparent 85%);
+  pointer-events: none;
+  animation: oleaje 7s ease-in-out infinite alternate;
+}
+@keyframes oleaje {
+  from { transform: translate3d(-14px, 0, 0) scaleY(1); opacity: .25; }
+  to   { transform: translate3d(14px, 3px, 0) scaleY(1.02); opacity: .5; }
+}
+.lago > section { position: relative; z-index: 1; }
+.miradas-sec { padding: 7rem 0 4rem; text-shadow: 0 0 6px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.9), 0 0 36px rgba(0,0,0,.8); }
+.miradas-sec .mirada p { color: var(--bone); }
+.miradas-sec .miradas { margin-top: 0; }
+.lago__nombre { position: relative; z-index: 1; margin: 0 auto; color: var(--bone-dim); font-size: .95rem; text-align: center; }
+.banda__pendiente { color: var(--bone-dim); font-style: italic; }
+
+/* Horizonte: friso de grecas donde el agua toca la tierra */
+.horizonte {
+  position: relative;
+  height: clamp(90px, 12vw, 150px);
+  background: url("img/frieze.jpg") left center / auto 100% repeat-x;
+  box-shadow: 0 -30px 60px -10px rgba(238,123,39,.22), 0 18px 30px rgba(0,0,0,.55);
+  border-block: 2px solid rgba(0,0,0,.6);
+}
+.horizonte::before {
+  /* resplandor de cempasúchil sobre el horizonte, como velas en el suelo */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 14rem;
+  background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(238,123,39,.20), transparent 70%);
+  pointer-events: none;
+}
+
+/* Losa: bloque de piedra oscura donde vive el texto en la zona de tierra */
+.losa {
+  background:
+    linear-gradient(180deg, rgba(18,13,9,.88), rgba(14,10,7,.82));
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 1px 0 rgba(234,223,200,.06),
+    inset 0 0 40px rgba(0,0,0,.45),
+    0 20px 40px rgba(0,0,0,.45);
+  padding: clamp(1.75rem, 5vw, 3.25rem);
+}
+
+/* ---------- tipografía ---------- */
+/* Rubik Dirt tiene un solo peso: nunca pedirle bold */
+.h-display, .hero__title, .banda__name, .mirada h3, .reco__band h3, .colab__title, .footer__name {
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.h-display {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1.02;
+  margin: 0 0 1.5rem;
+  color: var(--bone);
+}
+.lead { font-size: clamp(1.15rem, 2.4vw, 1.35rem); line-height: 1.5; color: var(--bone); }
+p { margin: 0 0 1rem; max-width: 65ch; }
+cite { font-style: italic; }
+
+/* ---------- botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: .75rem 1.4rem;
+  font: 600 1rem/1.2 var(--body);
+  text-decoration: none; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid var(--marigold);
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.btn--primary { background: var(--marigold); color: var(--soot); }
+.btn--primary:hover { background: transparent; color: var(--marigold); }
+.btn--ghost { background: transparent; color: var(--bone); border-color: rgba(234,223,200,.5); }
+.btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  overflow: hidden;
+  min-height: 100svh;
+  display: grid; align-items: center;
+  padding-block: clamp(3rem, 8vw, 5rem);
+}
+
+.hero__inner {
+  width: min(100% - 2 * var(--gap), var(--wrap)); margin-inline: auto;
+  display: grid; gap: clamp(1.25rem, 3vw, 2rem);
+  justify-items: center; text-align: center;
+}
+
+/* La luna llena: sale una sola vez al cargar */
+.luna {
+  position: relative;
+  width: clamp(7.5rem, 22vw, 12.5rem); aspect-ratio: 1;
+}
+.luna__halo, .luna__disc { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; }
+.luna__halo {
+  background: radial-gradient(circle,
+    rgba(255,240,210,.55) 38%,
+    rgba(214,175,99,.28) 48%,
+    rgba(238,123,39,.12) 60%,
+    transparent 72%);
+  transform: scale(1.55);
+  filter: blur(6px);
+  animation: halo-in 3.4s ease-out .2s both, halo-breathe 10s ease-in-out 3.6s infinite;
+}
+.luna__disc {
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(255,236,196,.35));
+  animation: luna-in 2.8s cubic-bezier(.2,.7,.2,1) .1s both;
+}
+@keyframes luna-in {
+  from { opacity: 0; transform: translateY(6%) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes halo-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes halo-breathe {
+  0%, 100% { transform: scale(1.55); opacity: 1; }
+  50%      { transform: scale(1.62); opacity: .85; }
+}
+
+.hero__lineup {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .25rem 0;
+  font-weight: 600; font-size: clamp(.95rem, 2.4vw, 1.1rem);
+  margin-bottom: .5rem;
+}
+.hero__lineup span + span::before {
+  /* rombo de jade entre nombres */
+  content: ""; display: inline-block; width: .4em; height: .4em; margin: 0 .8em .12em;
+  background: var(--jade); transform: rotate(45deg);
+}
+.hero__title {
+  font-size: clamp(5.5rem, 24vw, 13rem);
+  line-height: .85;
+  margin: 0 0 .9rem;
+  color: var(--bone);
+  text-shadow: 0 0 50px rgba(238,123,39,.22);
+}
+.hero__tagline {
+  font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(1.15rem, 3.2vw, 1.9rem); line-height: 1.15;
+  color: var(--gold); margin-bottom: 1.8rem; max-width: 22ch;
+}
+.hero__when p { margin: 0; font-size: clamp(1.05rem, 2.6vw, 1.25rem); }
+.hero__when p:first-child { font-weight: 700; }
+.hero__when p + p { color: var(--bone-dim); }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 2rem; }
+.hero__count { margin-top: 1.5rem; color: var(--ash); font-size: .95rem; }
+.hero__count strong { color: var(--marigold); font-weight: 700; }
+
+.hero__text { display: grid; justify-items: center; }
+.hero__text p { margin-inline: auto; }
+
+/* =========================================================
+   CONCEPTO (todavía en el cielo)
+   ========================================================= */
+.concepto { padding-block: var(--section) 2rem; }
+.miradas {
+  list-style: none; padding: 0; margin: clamp(3rem, 8vw, 5rem) 0 0;
+  display: grid; gap: 2.5rem;
+}
+@media (min-width: 820px) { .miradas { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+.mirada { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+.mirada h3 { font-size: 1.6rem; margin: .75rem 0 .5rem; line-height: 1; color: var(--gold); }
+
+.etimo { margin: 2.5rem 0 3rem; display: grid; gap: 1.5rem; grid-template-columns: repeat(3, 1fr); text-align: center; }
+.etimo div { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1.25rem .5rem; }
+.etimo dt { font-family: var(--display); font-size: clamp(1.6rem, 6vw, 3.4rem); line-height: 1; color: var(--gold); }
+.etimo dd { margin: .6rem 0 0; color: var(--bone-dim); }
+@media (max-width: 520px) { .etimo { gap: .6rem; } .etimo dd { font-size: .9rem; } }
+i[lang="nah"] { font-style: italic; color: var(--gold); }
+.mirada p { color: var(--bone-dim); margin: 0; }
+.mirada__glyph { width: 2.5rem; height: 2.5rem; fill: none; stroke: var(--jade); stroke-width: 1.6; stroke-linecap: round; }
+.mirada--snm .mirada__glyph circle { fill: var(--jade); stroke: none; }
+.mirada--anna .mirada__glyph { fill: var(--jade); stroke: none; }
+
+/* =========================================================
+   BANDAS (transición: la roca empieza a asomar)
+   ========================================================= */
+.bandas { padding-top: var(--section); padding-bottom: clamp(3rem, 8vw, 5rem); }
+.banda {
+  position: relative;
+  padding-block: clamp(1rem, 3vw, 1.75rem);
+}
+.bandas .h-display { text-shadow: 0 2px 0 rgba(0,0,0,.6), 0 0 30px rgba(0,0,0,.8); }
+.banda__grid { display: grid; gap: 2rem; }
+@media (min-width: 900px) { .banda__grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
+
+.banda__name {
+  font-size: clamp(2.4rem, 8vw, 4.4rem); line-height: .95;
+  color: var(--gold); margin: 0 0 1.5rem;
+  text-shadow: 0 2px 0 rgba(0,0,0,.6), 0 0 30px rgba(0,0,0,.6);
+}
+.banda__facts { margin: 0; display: grid; gap: .9rem; }
+.banda__facts div { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; }
+.banda__facts dt { color: var(--ash); font-size: .95rem; }
+.banda__facts dd { margin: 0; }
+.banda__body { text-shadow: 0 1px 12px rgba(0,0,0,.85); }
+
+.banda__body h4 { font-weight: 700; font-size: 1rem; margin: 2rem 0 .5rem; color: var(--marigold); }
+.tracks { list-style: none; padding: 0; margin: 0; }
+.tracks li {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem 1rem;
+  padding: .7rem 0; border-bottom: 1px solid var(--line-soft);
+}
+.tracks__t { font-weight: 600; }
+.tracks__why { color: var(--ash); font-size: .95rem; }
+.banda__links { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; margin-top: 1.5rem; }
+.banda__links a { color: var(--gold); font-weight: 600; }
+
+/* =========================================================
+   PUENTE
+   ========================================================= */
+.puente { padding-block: var(--section) calc(var(--section) / 2); }
+.puente__choices { display: flex; flex-wrap: wrap; gap: .6rem; margin: 2rem 0 2.5rem; }
+.chip {
+  font: 600 1rem/1 var(--body); color: var(--bone);
+  background: rgba(7,7,13,.35); border: 1.5px solid rgba(234,223,200,.3);
+  border-radius: 999px; padding: .85rem 1.2rem; min-height: 3rem; cursor: pointer;
+  transition: border-color .2s, background-color .2s, color .2s;
+}
+.chip:hover { border-color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--marigold); border-color: var(--marigold); color: var(--soot); }
+
+.puente__empty { color: var(--ash); }
+.reco { display: grid; gap: 2rem; }
+.reco__intro { font-size: 1.15rem; margin: 0; }
+.reco__band { border-left: 3px solid var(--jade); padding-left: 1.25rem; }
+.reco__band h3 { font-size: 1.7rem; line-height: 1; margin: 0 0 .4rem; color: var(--gold); }
+.reco__band > p { color: var(--bone-dim); margin-bottom: .75rem; }
+.reco__band ul { list-style: none; padding: 0; margin: 0; }
+.reco__band li { padding: .55rem 0; border-bottom: 1px solid var(--line-soft); }
+.reco__band li a { font-weight: 600; text-decoration: none; }
+.reco__band li a:hover { text-decoration: underline; color: var(--marigold); }
+.reco__band li span { display: block; color: var(--ash); font-size: .95rem; }
+.reco__band .reco__more { display: inline-block; margin-top: .75rem; color: var(--gold); font-weight: 600; }
+.reco.is-in { animation: reco-in .35s ease-out; }
+@keyframes reco-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* =========================================================
+   COLABORACIÓN
+   ========================================================= */
+.colab { padding-block: calc(var(--section) / 2); }
+.colab__grid { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 900px) { .colab__grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.colab__grid > div:first-child { text-shadow: 0 1px 14px rgba(0,0,0,.9); }
+.colab__song {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(238,123,39,.18), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(100,165,142,.16), transparent 55%),
+    rgba(14,10,7,.88);
+  box-shadow: inset 0 0 40px rgba(0,0,0,.45), 0 20px 40px rgba(0,0,0,.45);
+}
+.colab__credit { font-weight: 600; margin-bottom: .25rem; }
+.colab__title { font-size: clamp(1.9rem, 5vw, 2.9rem); line-height: 1; margin: 0 0 1.5rem; }
+.colab__more { margin: 1.5rem 0 0; color: var(--bone-dim); }
+
+/* =========================================================
+   LUGAR
+   ========================================================= */
+.lugar { padding-block: calc(var(--section) / 2); }
+.lugar__grid { display: grid; gap: 2.5rem; }
+@media (min-width: 900px) { .lugar__grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
+.lugar__grid > div > p { color: var(--bone-dim); }
+.lugar__facts { margin: 0; }
+.lugar__facts div { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--line-soft); }
+.lugar__facts dt { color: var(--ash); }
+.lugar__facts dd { margin: 0; }
+.lugar__facts a { color: var(--gold); }
+.tbd { color: var(--bone-dim); font-style: italic; }
+@media (max-width: 520px) { .lugar__facts div { grid-template-columns: 1fr; gap: .2rem; } }
+
+/* =========================================================
+   AVÍSAME
+   ========================================================= */
+.avisame { padding-block: calc(var(--section) / 2); }
+.form { display: grid; gap: 1.1rem; margin-top: 2rem; }
+.field { display: grid; gap: .4rem; }
+.field label { font-weight: 600; }
+.opt { color: var(--ash); font-weight: 400; }
+.field input, .field select {
+  font: 400 1.05rem/1.4 var(--body); color: var(--bone);
+  background: rgba(7,7,13,.6); border: 1.5px solid rgba(234,223,200,.22);
+  border-radius: .5rem; padding: .8rem 1rem; min-height: 3rem; width: 100%;
+}
+.field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 1.3rem) 55%, calc(100% - .95rem) 55%; background-size: .35rem .35rem; background-repeat: no-repeat; }
+.field select option { background: var(--soot); }
+.field input:focus, .field select:focus { border-color: var(--marigold); outline: none; }
+.form .btn { justify-self: start; margin-top: .5rem; }
+.form__status { min-height: 1.6em; margin: 0; }
+.form__status.is-ok { color: var(--jade); }
+.form__status.is-error { color: var(--marigold); }
+.hp { position: absolute; left: -9999px; }
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq { padding-block: calc(var(--section) / 2) var(--section); }
+.faq details { border-bottom: 1px solid var(--line-soft); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 1.1rem 2.2rem 1.1rem 0; position: relative;
+  font-weight: 600; font-size: 1.1rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; position: absolute; right: .3rem; top: 50%; width: .6rem; height: .6rem;
+  border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+  transform: translateY(-70%) rotate(45deg); transition: transform .2s;
+}
+.faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+.faq details p { color: var(--bone-dim); padding-bottom: 1.1rem; margin: 0; }
+
+/* =========================================================
+   FOOTER: el fondo de la tierra
+   ========================================================= */
+.footer {
+  padding-block: 3rem 4rem;
+  background:
+    linear-gradient(180deg, rgba(18,13,9,.78), rgba(5,4,3,.95)),
+    url("img/rock.jpg") center bottom / 640px auto repeat;
+  border-top: 1px solid var(--line);
+}
+.footer__grid { display: grid; gap: .75rem; }
+.footer__name { font-size: 2rem; line-height: 1; margin: 0; color: var(--gold); }
+.footer__grid p:nth-child(2) { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; font-weight: 600; }
+.footer__grid p:nth-child(2) a { text-decoration: none; }
+.footer__small { color: var(--ash); font-size: .95rem; }
+
+/* ---------- movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .luna__halo, .luna__disc { animation: none; opacity: 1; }
+  .lago__reflejo, .lago__agua { animation: none; }
+  .cosmos__nebula { animation: none; }
+  .bitacora__item--now::before { animation: none; }
+  .reco.is-in { animation: none; }
+}
+
+/* En pantallas angostas el agua se escala mucho: la oscurecemos para que el texto mande */
+@media (max-width: 700px) {
+  .lago__agua {
+    background:
+      linear-gradient(180deg, rgba(5,10,11,.5), rgba(5,10,11,.7) 60%, #0B0E0B 100%),
+      url("img/water.jpg") center top / cover no-repeat;
+  }
+  .lago__reflejo { display: none; }
+}
+
+
+/* placeholders: se ven claramente como pendientes */
+.ph { color: var(--ash); font-style: italic; border-bottom: 1px dashed rgba(155,140,118,.6); }
+.ph-box {
+  display: grid; place-items: center; text-align: center;
+  border: 1.5px dashed rgba(214,175,99,.35); border-radius: 6px;
+  background: repeating-linear-gradient(135deg, rgba(234,223,200,.03) 0 12px, transparent 12px 24px);
+  color: var(--ash); font-style: italic; padding: 1.5rem;
+}
+
+/* ---------- menú ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .7rem var(--gap);
+  background: linear-gradient(180deg, rgba(7,7,13,.85), rgba(7,7,13,.55));
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.nav__logo { font-family: var(--display); text-transform: uppercase; font-size: 1.5rem; color: var(--gold); text-decoration: none; line-height: 1; }
+.nav__links { display: flex; align-items: center; gap: .3rem 1.2rem; overflow-x: auto; scrollbar-width: none; }
+.nav__links::-webkit-scrollbar { display: none; }
+.nav__links a { color: var(--bone); text-decoration: none; font-weight: 600; font-size: .95rem; white-space: nowrap; padding: .35rem 0; }
+.nav__links a:hover { color: var(--gold); }
+.nav__cta { border: 1.5px solid var(--marigold); border-radius: 999px; padding: .35rem .9rem !important; color: var(--marigold) !important; }
+@media (max-width: 560px) { .nav__links a:not(.nav__cta):nth-child(1) { display: none; } .nav__links { gap: .9rem; } .nav__links a { font-size: .9rem; } }
+html { scroll-padding-top: 4.5rem; }
+.hero { padding-top: clamp(5rem, 10vw, 6.5rem); }
+
+/* ---------- fase de la luna en la cuenta regresiva ---------- */
+.hero__count { display: inline-flex; align-items: center; gap: .6rem; }
+.fase { width: 1.6rem; height: 1.6rem; flex: none; }
+
+/* ---------- puertas a las bandas ---------- */
+.puertas { display: grid; gap: 1.25rem; margin-top: 1rem; }
+@media (min-width: 860px) { .puertas { grid-template-columns: repeat(3, 1fr); } .puerta__name { min-height: 2em; display: flex; align-items: flex-end; } }
+.puerta { display: grid; gap: .35rem; text-decoration: none; transition: border-color .2s, transform .2s; }
+.puerta:hover { border-color: var(--marigold); transform: translateY(-2px); }
+.puerta__foto { aspect-ratio: 4 / 3; margin-bottom: .8rem; }
+.puerta__name { font-family: var(--display); text-transform: uppercase; color: var(--gold); font-size: clamp(1.9rem, 4.5vw, 2.6rem); line-height: 1; }
+.puerta__alt { color: var(--bone-dim); }
+.puerta__cta { color: var(--marigold); font-weight: 600; margin-top: .4rem; }
+.bandas { padding-bottom: 1rem; }
+
+/* ---------- playlist ---------- */
+.playlist { margin-block: 2rem; }
+.playlist__grid { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 900px) { .playlist__grid { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+.player { width: 100%; min-height: 352px; border: 0; border-radius: 12px; }
+.cal { display: flex; flex-wrap: wrap; gap: .5rem; }
+.cal .btn { min-height: 2.5rem; padding: .5rem 1rem; font-size: .95rem; }
+@media (prefers-reduced-motion: reduce) { .puerta:hover { transform: none; } }
+
+.puerta__img { width: 100%; object-fit: cover; border-radius: 4px; display: block; }
+
+/* Puerta con insignia mientras llega la foto de la banda */
+.puerta__img--marca { object-fit: contain; background: radial-gradient(circle at 50% 45%, rgba(214,175,99,.10), transparent 70%), rgba(7,7,13,.55); padding: 1.2rem; }

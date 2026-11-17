@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ollin · Algo se mueve en el ombligo de la luna · Lunario, 11 de julio de 2027</title>
+  <meta name="description" content="Ollin: algo se mueve en el ombligo de la luna. She No More, Cemican y Anna Fiori se encuentran en el Lunario del Auditorio Nacional el domingo 11 de julio de 2027.">
+  <meta name="theme-color" content="#120E1E">
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, X). Cambia la URL cuando tengas dominio. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ollin: algo se mueve en el ombligo de la luna">
+  <meta property="og:description" content="She No More, Cemican y Anna Fiori se encuentran en el Lunario del Auditorio Nacional. Domingo 11 de julio de 2027.">
+  <meta property="og:image" content="og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=Rubik+Dirt&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#concepto">Saltar al contenido</a>
+
+<!-- ============ HERO ============ -->
+<div class="cosmos" aria-hidden="true">
+  <div class="cosmos__layer" data-depth="0.06"><div class="cosmos__nebula cosmos__nebula--a"></div></div>
+  <div class="cosmos__layer" data-depth="0.16"><div class="cosmos__nebula cosmos__nebula--b"></div></div>
+  <div class="cosmos__layer" data-depth="0.28"><div class="cosmos__nebula cosmos__nebula--c"></div></div>
+</div>
+<canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+<nav class="nav" aria-label="Principal">
+  <a class="nav__logo" href="index.html">Ollin</a>
+  <div class="nav__links">
+    <a href="#concepto">Concepto</a>
+    <a href="#bandas">Bandas</a>
+    <a href="#lugar">El Lunario</a>
+    <a class="nav__cta" href="#avisame">Avísame</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+
+  <div class="hero__inner">
+    <div class="luna" aria-hidden="true">
+      <div class="luna__halo"></div>
+      <img class="luna__disc" src="img/moon.png" alt="" width="720" height="720">
+    </div>
+
+    <div class="hero__text">
+      <p class="hero__lineup">
+        <span class="c-snm">She No More</span>
+        <span class="c-cem">Cemican</span>
+        <span class="c-anna">Anna Fiori</span>
+      </p>
+      <h1 class="hero__title">Ollin</h1>
+      <p class="hero__tagline">Algo se mueve en el ombligo de la luna</p>
+
+      <div class="hero__when">
+        <p><time datetime="2027-07-11">Domingo 11 de julio de 2027</time></p>
+        <p>Lunario del Auditorio Nacional, CDMX</p>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#avisame">Avísame cuando salgan los boletos</a>
+        <a class="btn btn--ghost" href="#concepto">Qué está pasando</a>
+        <a class="btn btn--ghost" href="#lugar">Agrégalo a tu calendario</a>
+      </div>
+
+      <p class="hero__count" id="countdown" aria-live="polite"><svg class="fase" id="fase" viewBox="0 0 40 40" aria-hidden="true"></svg><span id="countdown-text"></span></p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ CONCEPTO ============ -->
+<section class="concepto" id="concepto">
+  <div class="wrap wrap--narrow">
+    <h2 class="h-display">Ollin es movimiento</h2>
+    <p class="lead">En náhuatl, <i lang="nah">ollin</i> es movimiento. Según los mexicas, vivimos en la era del Quinto Sol, la de <i lang="nah">Nahui Ollin</i>, “cuatro movimiento”: un mundo que no se queda quieto.</p>
+    <p>Tres bandas que venían cada una por su camino empezaron a moverse hacia el mismo punto. Ya cantamos juntos, ya compartimos escenario, y algo más se está formando entre nosotros. El 11 de julio lo vamos a encontrar en el centro.</p>
+    <h3 class="concepto__sub">¿Qué centro?</h3>
+    <p>Una de las lecturas del nombre de México, <i lang="nah">Mēxihco</i>, lo parte en tres palabras del náhuatl.</p>
+  </div>
+
+  <div class="wrap">
+    <dl class="etimo">
+      <div><dt lang="nah">metztli</dt><dd>luna</dd></div>
+      <div><dt lang="nah">xictli</dt><dd>ombligo, centro</dd></div>
+      <div><dt lang="nah">-co</dt><dd>lugar, “en”</dd></div>
+    </dl>
+  </div>
+
+  <div class="wrap wrap--narrow">
+    <p>En el ombligo de la luna. Tenochtitlan se levantó en medio de una laguna que las fuentes llaman <i lang="nah">Metztliapan</i>, el lago de la luna. Y al pie del Templo Mayor, en el centro exacto de la ciudad, quedó enterrada la luna misma: el disco de piedra de Coyolxauhqui, hallado en 1978.</p>
+    <p>El Lunario está en Chapultepec, en la antigua orilla de ese lago. Ahí nos vamos a encontrar tres proyectos que miran el mismo cielo desde alturas distintas, y que se están acercando.</p>
+  </div>
+
+
+</section>
+
+
+
+
+
+<!-- ============ LAGO: Metztliapan ============
+     El agua empieza con las tres miradas y llega hasta la orilla de piedra. -->
+<div class="lago">
+  <div class="lago__agua" aria-hidden="true"></div>
+  <canvas class="lago__olas" id="lago-olas" aria-hidden="true"></canvas>
+  <div class="lago__reflejo" aria-hidden="true"></div>
+  <canvas class="lago__brillos" id="lago-brillos" aria-hidden="true"></canvas>
+  <section class="miradas-sec" aria-label="Las tres alturas del cielo">
+  <div class="wrap">
+    <ul class="miradas">
+      <li class="mirada mirada--snm">
+        <svg class="mirada__glyph" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="2.5"/><circle cx="9" cy="12" r="1.2"/><circle cx="31" cy="10" r="1.6"/><circle cx="30" cy="30" r="1.2"/><circle cx="11" cy="29" r="1.8"/></svg>
+        <h3>She No More</h3>
+        <p>Bajan desde las estrellas. Ante el cosmos somos polvo y un pestañeo, un punto en el mapa que esa noche cae en el centro.</p>
+      </li>
+      <li class="mirada mirada--anna">
+        <svg class="mirada__glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M26 6a15 15 0 1 0 0 28a12 12 0 1 1 0-28z"/></svg>
+        <h3>Anna Fiori</h3>
+        <p>Crece con la luna. Metztli, la primera mitad de la palabra México, guía sus fases: soltar, atravesar, renacer.</p>
+      </li>
+      <li class="mirada mirada--cem">
+        <svg class="mirada__glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 8h32M8 8v6h24V8M12 14v6h16v-6M16 20v6h8v-6M19 26v8h2v-8"/></svg>
+        <h3>Cemican</h3>
+        <p>Sube desde el inframundo. El ritual al pie del templo, donde la vida y la muerte se mueven juntas.</p>
+      </li>
+    </ul>
+  </div>
+  </section>
+  <p class="lago__nombre"><i lang="nah">Metztliapan</i>, el lago de la luna</p>
+</div><!-- /lago -->
+
+<!-- ============ TIERRA: desde aquí, la piedra ============ -->
+<div class="tierra">
+<div class="horizonte" aria-hidden="true"></div>
+
+<!-- ============ BANDAS: tres puertas ============ -->
+<section class="bandas" id="bandas" aria-labelledby="bandas-title">
+  <div class="wrap">
+    <h2 class="h-display" id="bandas-title">Quiénes se están encontrando</h2>
+    <div class="puertas">
+    <a class="puerta losa" href="she-no-more.html">
+      <img class="puerta__foto puerta__img" src="img/bandas/she-no-more.jpg" alt="" loading="lazy">
+      <span class="puerta__name">She No More</span>
+      <span class="puerta__alt">Bajan desde las estrellas</span>
+      <span class="puerta__cta">Conoce a She No More</span>
+    </a>
+    <a class="puerta losa" href="cemican.html">
+      <!-- EDITAR: foto o logo de la banda (img/cemican.jpg) -->
+      <span class="puerta__foto ph-box" aria-hidden="true"><span>Foto pendiente</span></span>
+      <span class="puerta__name">Cemican</span>
+      <span class="puerta__alt">Sube desde el inframundo</span>
+      <span class="puerta__cta">Conoce a Cemican</span>
+    </a>
+    <a class="puerta losa" href="anna-fiori.html">
+      <!-- EDITAR: foto o logo de la banda (img/anna-fiori.jpg) -->
+      <img class="puerta__foto puerta__img puerta__img--marca" src="img/bandas/anna-fiori-insignia.webp" alt="" loading="lazy">
+      <span class="puerta__name">Anna Fiori</span>
+      <span class="puerta__alt">Crece con la luna</span>
+      <span class="puerta__cta">Conoce a Anna Fiori</span>
+    </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAYLIST ============
+     EDITAR: pega el link de embed de la playlist de Spotify en data-embed.
+     En Spotify: playlist → Compartir → Insertar playlist → copia el src del iframe
+     (se ve así: https://open.spotify.com/embed/playlist/XXXXXXXX). -->
+<section class="playlist wrap" id="playlist" aria-labelledby="playlist-title">
+  <div class="losa playlist__grid">
+    <div>
+      <h2 class="h-display" id="playlist-title">La playlist de Ollin</h2>
+      <p class="lead">Las tres bandas en una sola lista. Dale play y llega al 11 de julio sabiéndote las de los otros dos.</p>
+    </div>
+    <div class="playlist__player" id="playlist-player" data-embed="">
+      <div class="player ph-box"><span>Playlist de Spotify pendiente<br>(pega el link de embed en <code>data-embed</code>)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LUGAR ============ -->
+<section class="lugar" id="lugar" aria-labelledby="lugar-title">
+  <div class="wrap lugar__grid losa">
+    <div>
+      <h2 class="h-display" id="lugar-title">El Lunario</h2>
+      <p>El foro de unas mil personas a un costado del Auditorio Nacional, en Chapultepec: la orilla poniente del antiguo lago de la luna. Un recinto con nombre de luna para que el movimiento llegue al centro.</p>
+      <p>Nos vemos en <cite>La Luna</cite>, la escultura de Juan Soriano en la explanada del Auditorio.</p>
+    </div>
+    <dl class="lugar__facts">
+      <div><dt>Fecha</dt><dd><time datetime="2027-07-11">Domingo 11 de julio de 2027</time></dd></div>
+      <div><dt>Puertas</dt><dd class="tbd">Por anunciar</dd></div>
+      <div><dt>Orden del cartel</dt><dd class="tbd">Por anunciar</dd></div>
+      <div><dt>Dirección</dt><dd>Paseo de la Reforma 50, Bosque de Chapultepec, Miguel Hidalgo, CDMX</dd></div>
+      <div><dt>Cómo llegar</dt><dd>Metro Auditorio (Línea 7), que sale directo a la escalinata. También Metrobús Auditorio. Hay estacionamiento del Auditorio Nacional.</dd></div>
+      <div><dt>Mapa</dt><dd><a href="https://maps.google.com/?q=Lunario+del+Auditorio+Nacional" rel="noopener">Abrir en Google Maps</a></dd></div>
+      <div><dt>Agrégalo</dt><dd class="cal">
+        <!-- EDITAR: cuando confirmen la hora, ajústala aquí y en ollin.ics (ahora: 19:00 a 23:59) -->
+        <a class="btn btn--ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ollin%3A%20She%20No%20More%2C%20Cemican%20y%20Anna%20Fiori&amp;dates=20270711T190000%2F20270711T235900&amp;ctz=America%2FMexico_City&amp;location=Lunario%20del%20Auditorio%20Nacional%2C%20Paseo%20de%20la%20Reforma%2050%2C%20CDMX&amp;details=Algo%20se%20mueve%20en%20el%20ombligo%20de%20la%20luna." rel="noopener">Google Calendar</a>
+        <a class="btn btn--ghost" href="ollin.ics" download>iPhone y otros (.ics)</a>
+      </dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ AVÍSAME ============ -->
+<section class="avisame" id="avisame" aria-labelledby="avisame-title">
+  <div class="wrap wrap--narrow losa">
+    <h2 class="h-display" id="avisame-title">Los boletos aún no salen</h2>
+    <p class="lead">Déjanos tu correo y te avisamos en cuanto abra la venta, antes que en redes.</p>
+
+    <!-- Netlify Forms detecta este formulario automáticamente al hacer deploy -->
+    <form class="form" name="avisame" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="avisame-form">
+      <input type="hidden" name="form-name" value="avisame">
+      <p class="hp"><label>No llenes esto <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+      <div class="field">
+        <label for="f-nombre">Nombre</label>
+        <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Correo</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-whats">WhatsApp <span class="opt">(opcional)</span></label>
+        <input id="f-whats" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel">
+      </div>
+      <div class="field">
+        <label for="f-fan">¿Por quién vienes?</label>
+        <select id="f-fan" name="fanbase" required>
+          <option value="" disabled selected>Elige una</option>
+          <option value="She No More">She No More</option>
+          <option value="Cemican">Cemican</option>
+          <option value="Anna Fiori">Anna Fiori</option>
+          <option value="Las tres">Las tres</option>
+          <option value="Ninguna todavía">Ninguna todavía</option>
+        </select>
+      </div>
+
+      <button class="btn btn--primary" type="submit">Avísame</button>
+      <p class="form__status" id="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS ============ -->
+<section class="faq" id="preguntas" aria-labelledby="faq-title">
+  <div class="wrap wrap--narrow losa">
+    <h2 class="h-display" id="faq-title">Preguntas</h2>
+
+    <details>
+      <summary>¿Cuánto cuestan los boletos y dónde se compran?</summary>
+      <p>Todavía no hay precios ni venta. Regístrate arriba y te avisamos en cuanto abra.</p>
+    </details>
+    <details>
+      <summary>¿A qué hora empieza y quién toca primero?</summary>
+      <p>El horario y el orden del cartel los anunciamos junto con la venta.</p>
+    </details>
+    <details>
+      <summary>¿Hay límite de edad?</summary>
+      <p>Lo confirmamos con el recinto y lo publicamos aquí.</p>
+    </details>
+    <details>
+      <summary>¿Va a haber mercancía?</summary>
+      <p>Sí, de las tres bandas. Los detalles llegan más cerca de la fecha.</p>
+    </details>
+  </div>
+</section>
+
+</div><!-- /tierra -->
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <p class="footer__name">Ollin</p>
+    <p>
+      <a href="#she-no-more" class="c-snm">She No More</a>
+      <a href="#cemican" class="c-cem">Cemican</a>
+      <a href="#anna-fiori" class="c-anna">Anna Fiori</a>
+    </p>
+    <p class="footer__small">Algo se mueve en el ombligo de la luna. Domingo 11 de julio de 2027, Lunario del Auditorio Nacional. Nos vemos en La Luna 🤘</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

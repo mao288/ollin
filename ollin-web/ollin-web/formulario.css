@@ -1,0 +1,37 @@
+/* Formulario para las bandas: comparte paleta y tipografía con el sitio */
+.pagina-form main { position: relative; z-index: 1; }
+.ff { padding-block: clamp(3rem, 8vw, 5rem) var(--section); }
+.ff__head { margin-bottom: 2.5rem; text-shadow: 0 1px 14px rgba(0,0,0,.85); }
+.ff__kicker { color: var(--gold); font-weight: 600; }
+.ff__kicker a { color: var(--gold); }
+.ff__form { display: grid; gap: 1.5rem; }
+.ff__step { margin: 0; display: grid; gap: 1.1rem; min-width: 0; }
+.ff__step legend {
+  font-family: var(--display); text-transform: uppercase; font-size: 1.5rem; color: var(--gold);
+  padding: 0; margin-bottom: .4rem; float: left; width: 100%;
+  display: flex; align-items: center; gap: .7rem;
+}
+.ff__step legend + * { clear: both; }
+.ff__num {
+  display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%;
+  border: 1.5px solid var(--marigold); color: var(--marigold);
+  font: 700 1rem/1 var(--body);
+}
+.ff__hint { color: var(--ash); font-size: .95rem; margin: 0; }
+.ff__row { display: grid; gap: 1.1rem; }
+@media (min-width: 640px) { .ff__row { grid-template-columns: 1fr 1fr; } }
+.ff__song { display: grid; gap: .6rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line-soft); }
+@media (min-width: 640px) { .ff__song { grid-template-columns: 1fr 1.3fr; gap: 1.1rem; } }
+.ff__count { margin: 0; text-align: right; color: var(--ash); font-size: .85rem; min-height: 1.2em; }
+.ff__count.is-near { color: var(--marigold); }
+.field textarea {
+  font: 400 1.05rem/1.5 var(--body); color: var(--bone);
+  background: rgba(7,7,13,.6); border: 1.5px solid rgba(234,223,200,.22);
+  border-radius: .5rem; padding: .8rem 1rem; width: 100%; resize: vertical;
+}
+.field textarea:focus { border-color: var(--marigold); outline: none; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(199,185,161,.45); }
+.ff__check { display: grid; grid-template-columns: auto 1fr; gap: .8rem; align-items: start; cursor: pointer; }
+.ff__check input { width: 1.25rem; height: 1.25rem; margin-top: .2rem; accent-color: var(--marigold); }
+.ff__step .btn { justify-self: start; }
+.ff__song .field, .ff__row .field { align-content: start; }

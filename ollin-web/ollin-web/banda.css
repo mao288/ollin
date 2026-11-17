@@ -1,0 +1,85 @@
+/* Páginas de banda: comparten paleta, cosmos y piedra con el inicio */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.bp__hero { min-height: 78svh; padding-top: 6rem; }
+.bp__evento { color: var(--gold); font-weight: 600; margin: 0 auto .5rem; }
+.bp__evento a { color: var(--gold); }
+.bp__name {
+  font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(3.4rem, 13vw, 8.5rem); line-height: .9; margin: 0 0 .8rem;
+  color: var(--bone); text-shadow: 0 0 50px rgba(238,123,39,.22);
+}
+.bp__logo { max-width: min(36rem, 86vw); max-height: 14rem; object-fit: contain; margin: 0 auto 1rem; }
+.bp__altura { font-family: var(--display); text-transform: uppercase; color: var(--gold); font-size: clamp(1.2rem, 3.4vw, 1.9rem); margin: 0 auto .4rem; }
+.bp__verbo { color: var(--bone-dim); margin: 0 auto 1.6rem; }
+.bp__verbo strong { color: var(--marigold); font-weight: 700; }
+.bp__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 2rem; margin: 0; }
+.bp__facts div { text-align: center; }
+.bp__facts dt { color: var(--ash); font-size: .9rem; }
+.bp__facts dd { margin: 0; font-weight: 600; max-width: 22rem; }
+
+.bp__sec { margin-block: clamp(1.25rem, 3vw, 2rem); }
+.tierra > .bp__sec:first-of-type { margin-top: clamp(3rem, 8vw, 5rem); }
+.bp__grid { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 900px) { .bp__grid { grid-template-columns: 5fr 7fr; gap: 3rem; } }
+.bp__sub { font-weight: 700; font-size: 1rem; color: var(--marigold); margin: 2rem 0 .5rem; }
+.bp__hitos { margin: 0; padding-left: 1.2rem; color: var(--bone-dim); }
+.bp__hitos li { margin-bottom: .4rem; }
+
+.bp__foto { margin: 0; }
+.bp__foto img { width: 100%; border-radius: 6px; display: block; }
+.bp__foto figcaption { color: var(--ash); font-size: .85rem; margin-top: .4rem; }
+.bp__foto--ph { aspect-ratio: 4 / 3; }
+
+/* integrantes */
+.miembros { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 13rem)); justify-content: center; }
+.miembro { text-align: center; padding: 1.25rem .75rem; border: 1px solid var(--line-soft); border-radius: 6px; background: rgba(7,7,13,.35); }
+.miembro__foto { width: 7rem; height: 7rem; border-radius: 50%; object-fit: cover; margin: 0 auto .9rem; display: block; border: 2px solid rgba(214,175,99,.5); }
+.miembro__foto--ph { background: radial-gradient(circle at 50% 38%, rgba(234,223,200,.18) 0 18%, transparent 19%), radial-gradient(ellipse 34% 26% at 50% 86%, rgba(234,223,200,.14) 0 99%, transparent 100%), rgba(7,7,13,.6); border-style: dashed; }
+.miembro__nombre { font-family: var(--display); text-transform: uppercase; color: var(--gold); font-size: 1.25rem; line-height: 1.05; margin: 0 0 .25rem; }
+.miembro__rol { color: var(--bone-dim); margin: 0 0 .5rem; font-size: .95rem; }
+.miembro__ig { color: var(--marigold); font-weight: 600; font-size: .95rem; }
+
+/* reproductor */
+.player { width: 100%; min-height: 352px; border: 0; border-radius: 12px; }
+
+/* discografía */
+.discos { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); }
+.disco__portada { width: 100%; aspect-ratio: 1; border-radius: 4px; object-fit: cover; display: block; }
+.disco__portada--ph { border: 1.5px dashed rgba(214,175,99,.35); background: rgba(7,7,13,.5); }
+.disco__titulo { margin: .6rem 0 0; font-weight: 600; }
+.disco__anio { margin: 0; color: var(--ash); font-size: .9rem; }
+.bp__redes { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; }
+.bp__redes a { color: var(--gold); font-weight: 600; }
+
+/* navegación entre bandas */
+.bp__nav { display: grid; gap: 1.25rem; }
+@media (min-width: 700px) { .bp__nav { grid-template-columns: 1fr 1fr; } }
+.bp__puerta { display: grid; gap: .2rem; text-decoration: none; transition: border-color .2s; }
+.bp__puerta:hover { border-color: var(--marigold); }
+.bp__puerta:nth-child(2) { text-align: right; }
+.bp__dir { color: var(--marigold); font-weight: 600; font-size: .9rem; }
+.bp__pname { font-family: var(--display); text-transform: uppercase; font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--gold); line-height: 1; }
+.bp__palt { color: var(--bone-dim); }
+.bp__volver { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; padding-bottom: var(--section); }
+.bp__volver { margin-bottom: 0; }
+.tierra { display: flow-root; }
+@media (max-width: 560px) {
+  .miembros { grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .miembro { padding: 1rem .5rem; }
+  .miembro__foto { width: 5.5rem; height: 5.5rem; }
+  .miembro__nombre { font-size: 1.05rem; }
+}
+.disco a { text-decoration: none; color: inherit; display: block; }
+.disco a:hover .disco__portada { outline: 2px solid var(--marigold); outline-offset: 2px; }
+.disco a:hover .disco__titulo { color: var(--gold); }
+/* integrantes en filas centradas, sin importar cuántos sean */
+.miembros { display: flex; flex-wrap: wrap; justify-content: center; }
+.miembro { flex: 0 1 12.5rem; }
+@media (max-width: 560px) { .miembro__ig { font-size: .82rem; overflow-wrap: anywhere; } .miembros { gap: .6rem; } .miembro { flex: 0 0 calc(50% - .3rem); min-width: 0; } .miembro__nombre { overflow-wrap: anywhere; } }
+
+/* En sus palabras (opcional) */
+.citas { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-top: 1rem; }
+.cita { margin: 0; padding-left: 1.1rem; border-left: 2px solid var(--marigold); }
+.cita blockquote { margin: 0 0 .6rem; font-size: clamp(1.1rem, 2.2vw, 1.3rem); line-height: 1.5; color: var(--bone); }
+.cita figcaption { color: var(--gold); font-size: .9rem; }
